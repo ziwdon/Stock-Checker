@@ -3,9 +3,9 @@ import time
 
 # Constants
 URL = 'STORE URL HERE' # Replace with store page URL
-SEARCH_TEXT = 'TEXT CONDITION HERE' # Replace with the text that indicates stock on the store page
+SEARCH_TEXT = 'TEXT CONDITION HERE' # Replace with the text that indicates NO STOCK on the store page
 PUSHBULLET_TOKEN = 'TOKEN HERE'  # Replace with your actual Pushbullet API token
-PUSHBULLET_URL = 'https://api.pushbullet.com/v2/pushes'
+PUSHBULLET_URL = 'https://api.pushbullet.com/v2/pushes' # PushBullet API
 CHECK_INTERVAL = 1800 # 30 minutes
 
 def check_stock():
