@@ -1,12 +1,16 @@
 import requests
 import time
+import os
+from dotenv import load_dotenv
 
-# Constants
-URL = 'STORE URL HERE' # Replace with store page URL
-SEARCH_TEXT = 'TEXT CONDITION HERE' # Replace with the text that indicates NO STOCK on the store page
-PUSHBULLET_TOKEN = 'TOKEN HERE'  # Replace with your actual Pushbullet API token
-PUSHBULLET_URL = 'https://api.pushbullet.com/v2/pushes' # PushBullet API
-CHECK_INTERVAL = 1800 # 30 minutes
+# Load environment variables from .env file
+load_dotenv()
+
+URL = os.getenv('URL')
+SEARCH_TEXT = os.getenv('SEARCH_TEXT')
+PUSHBULLET_TOKEN = os.getenv('PUSHBULLET_TOKEN')
+PUSHBULLET_URL = os.getenv('PUSHBULLET_URL', 'https://api.pushbullet.com/v2/pushes')
+CHECK_INTERVAL = int(os.getenv('CHECK_INTERVAL', '1800'))
 
 def check_stock():
     try:
@@ -43,7 +47,7 @@ def send_push_notification():
 def main():
     while True:
         check_stock()
-        # Sleep for CHECK_INTERVAL minutes
+        # Sleep for the specified interval
         time.sleep(CHECK_INTERVAL)
 
 if __name__ == '__main__':
